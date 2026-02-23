@@ -289,3 +289,48 @@
     border-color: var(--muted-foreground);
   }
 }
+
+.app-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-input-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.app-input-unit {
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.app-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--foreground);
+  background-color: var(--input);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  outline: none;
+  appearance: none;
+  font-family: var(--font-family-body), inherit;
+
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  &:focus {
+    border-color: rgba(255, 215, 0, 0.4);
+  }
+}
