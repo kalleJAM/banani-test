@@ -34,20 +34,32 @@
           </div>
 
           <div class="inputs-section" aria-label="Seitwärtssprung Eingaben">
-            <div class="attempt-row">
-              <div class="attempt-label">Versuch 1</div>
-              <div class="attempt-input-card" @click="focusAttempt(1)">
-                <div class="attempt-value">{{ attempt1 || '__' }}</div>
-                <div class="attempt-unit">Sprünge in 15 Sekunden</div>
+            <div class="input-card app-input-wrap">
+              <div class="app-input-label-row">
+                <span class="app-input-label">Versuch 1</span>
+                <span class="app-input-unit">Sprünge in 15 Sek.</span>
               </div>
+              <input
+                v-model.number="attempt1"
+                type="number"
+                class="app-input"
+                placeholder="Anzahl"
+                min="0"
+              />
             </div>
 
-            <div class="attempt-row">
-              <div class="attempt-label">Versuch 2</div>
-              <div class="attempt-input-card" @click="focusAttempt(2)">
-                <div class="attempt-value">{{ attempt2 || '__' }}</div>
-                <div class="attempt-unit">Sprünge in 15 Sekunden</div>
+            <div class="input-card app-input-wrap">
+              <div class="app-input-label-row">
+                <span class="app-input-label">Versuch 2</span>
+                <span class="app-input-unit">Sprünge in 15 Sek.</span>
               </div>
+              <input
+                v-model.number="attempt2"
+                type="number"
+                class="app-input"
+                placeholder="Anzahl"
+                min="0"
+              />
             </div>
 
             <div class="result-row">
@@ -75,12 +87,12 @@ const attempt1 = ref('')
 const attempt2 = ref('')
 
 const bestResult = computed(() => {
-  const a = parseInt(attempt1.value, 10)
-  const b = parseInt(attempt2.value, 10)
-  if (!isNaN(a) && !isNaN(b)) return Math.max(a, b)
-  if (!isNaN(a)) return a
-  if (!isNaN(b)) return b
-  return '__'
+  const a = Number(attempt1.value)
+  const b = Number(attempt2.value)
+  if (a > 0 && b > 0) return Math.max(a, b)
+  if (a > 0) return a
+  if (b > 0) return b
+  return '–'
 })
 
 function goToTests() {
@@ -92,14 +104,6 @@ function goToSports() {
 }
 
 function playVideo() {}
-
-function focusAttempt(n) {
-  const val = prompt('Anzahl Sprünge (Versuch ' + n + '):', n === 1 ? attempt1.value : attempt2.value)
-  if (val != null) {
-    if (n === 1) attempt1.value = val
-    else attempt2.value = val
-  }
-}
 
 function save() {
   router.push('/screen/21')
@@ -134,11 +138,7 @@ function save() {
 .video-caption { font-size: 13px; color: var(--muted-foreground); }
 
 .inputs-section { display: flex; flex-direction: column; gap: 14px; }
-.attempt-row { display: flex; flex-direction: column; gap: 6px; }
-.attempt-label { font-size: 15px; font-weight: 600; }
-.attempt-input-card { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-radius: var(--radius-lg); background-color: var(--card); cursor: pointer; }
-.attempt-value { font-size: 18px; font-weight: 700; }
-.attempt-unit { font-size: 14px; color: var(--muted-foreground); text-align: right; }
+.input-card { background-color: var(--card); border-radius: var(--radius-lg); padding: 12px 14px; }
 .result-row { margin-top: 4px; }
 .result-badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background-color: rgba(255, 215, 0, 0.12); color: var(--primary); font-size: 13px; font-weight: 600; }
 

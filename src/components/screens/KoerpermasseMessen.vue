@@ -57,48 +57,34 @@
           </div>
 
           <div class="inputs-section" aria-label="Eingabe Körpermaße">
-            <div class="input-card">
-              <div class="input-header">
-                <span class="input-label">Körpergröße</span>
-                <span class="input-unit">cm</span>
+            <div class="input-card app-input-wrap">
+              <div class="app-input-label-row">
+                <span class="app-input-label">Körpergröße</span>
+                <span class="app-input-unit">cm</span>
               </div>
-              <div class="fake-input">
-                <span class="fake-input-value">{{ height }} cm</span>
-              </div>
-              <div class="slider-track" @click="onHeightSliderClick">
-                <div class="slider-fill" :style="{ width: heightPercent + '%' }"></div>
-                <div
-                  class="slider-thumb"
-                  :style="{ left: heightPercent + '%' }"
-                  @mousedown="startDragHeight"
-                ></div>
-              </div>
-              <div class="slider-min-max">
-                <span>80</span>
-                <span>220</span>
-              </div>
+              <input
+                v-model.number="height"
+                type="number"
+                class="app-input"
+                placeholder="z.B. 164"
+                min="80"
+                max="220"
+              />
             </div>
 
-            <div class="input-card">
-              <div class="input-header">
-                <span class="input-label">Körpergewicht</span>
-                <span class="input-unit">kg</span>
+            <div class="input-card app-input-wrap">
+              <div class="app-input-label-row">
+                <span class="app-input-label">Körpergewicht</span>
+                <span class="app-input-unit">kg</span>
               </div>
-              <div class="fake-input">
-                <span class="fake-input-value">{{ weight }} kg</span>
-              </div>
-              <div class="slider-track" @click="onWeightSliderClick">
-                <div class="slider-fill" :style="{ width: weightPercent + '%' }"></div>
-                <div
-                  class="slider-thumb"
-                  :style="{ left: weightPercent + '%' }"
-                  @mousedown="startDragWeight"
-                ></div>
-              </div>
-              <div class="slider-min-max">
-                <span>15</span>
-                <span>120</span>
-              </div>
+              <input
+                v-model.number="weight"
+                type="number"
+                class="app-input"
+                placeholder="z.B. 42"
+                min="15"
+                max="120"
+              />
             </div>
 
             <div class="hint-text">
@@ -121,21 +107,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const HEIGHT_MIN = 80
-const HEIGHT_MAX = 220
-const WEIGHT_MIN = 15
-const WEIGHT_MAX = 120
+const height = ref('')
+const weight = ref('')
 
-const height = ref(164)
-const weight = ref(42)
-
-const heightPercent = computed(() => ((height.value - HEIGHT_MIN) / (HEIGHT_MAX - HEIGHT_MIN)) * 100)
-const weightPercent = computed(() => ((weight.value - WEIGHT_MIN) / (WEIGHT_MAX - WEIGHT_MIN)) * 100)
 const progressPercent = computed(() => 20)
 
 function goToTests() {
@@ -146,58 +125,11 @@ function goToSports() {
   router.push('/screen/19')
 }
 
-function playVideo() {
-  // Platzhalter
-}
+function playVideo() {}
 
 function save() {
   router.push('/screen/21')
 }
-
-function onHeightSliderClick(e) {
-  const el = e.currentTarget
-  const rect = el.getBoundingClientRect()
-  const p = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
-  height.value = Math.round(HEIGHT_MIN + p * (HEIGHT_MAX - HEIGHT_MIN))
-}
-
-function onWeightSliderClick(e) {
-  const el = e.currentTarget
-  const rect = el.getBoundingClientRect()
-  const p = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
-  weight.value = Math.round(WEIGHT_MIN + p * (WEIGHT_MAX - WEIGHT_MIN))
-}
-
-let dragging = null
-function startDragHeight() {
-  dragging = 'height'
-}
-function startDragWeight() {
-  dragging = 'weight'
-}
-
-function onMouseMove(e) {
-  if (!dragging) return
-  const slider = document.querySelector(dragging === 'height' ? '.input-card:first-child .slider-track' : '.input-card:nth-child(2) .slider-track')
-  if (!slider) return
-  const rect = slider.getBoundingClientRect()
-  const p = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width))
-  if (dragging === 'height') height.value = Math.round(HEIGHT_MIN + p * (HEIGHT_MAX - HEIGHT_MIN))
-  else weight.value = Math.round(WEIGHT_MIN + p * (WEIGHT_MAX - WEIGHT_MIN))
-}
-
-function onMouseUp() {
-  dragging = null
-}
-
-onMounted(() => {
-  window.addEventListener('mousemove', onMouseMove)
-  window.addEventListener('mouseup', onMouseUp)
-})
-onUnmounted(() => {
-  window.removeEventListener('mousemove', onMouseMove)
-  window.removeEventListener('mouseup', onMouseUp)
-})
 </script>
 
 <style scoped>
@@ -243,17 +175,8 @@ onUnmounted(() => {
 .instructions-list { margin: 0; padding-left: 18px; font-size: 13px; color: var(--card-foreground); display: flex; flex-direction: column; gap: 2px; }
 
 .inputs-section { display: flex; flex-direction: column; gap: 12px; }
-.input-card { background-color: var(--card); border-radius: var(--radius-lg); padding: 10px 12px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
-.input-header { display: flex; justify-content: space-between; align-items: center; }
-.input-label { font-size: 14px; font-weight: 600; }
-.input-unit { font-size: 13px; color: var(--muted-foreground); }
-.fake-input { border-radius: var(--radius-md); background-color: var(--input); padding: 10px 12px; }
-.fake-input-value { font-size: 15px; color: var(--foreground); }
-.slider-track { position: relative; width: 100%; height: 6px; border-radius: 999px; background-color: #111111; margin-top: 4px; cursor: pointer; }
-.slider-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, rgba(255, 215, 0, 0.3), var(--primary)); }
-.slider-thumb { position: absolute; top: 50%; width: 16px; height: 16px; border-radius: 999px; background-color: var(--primary); transform: translate(-50%, -50%); box-shadow: 0 0 8px rgba(255, 215, 0, 0.6); cursor: grab; }
-.slider-min-max { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted-foreground); margin-top: 4px; }
-.hint-text { font-size: 12px; color: var(--muted-foreground); }
+.input-card { background-color: var(--card); border-radius: var(--radius-lg); padding: 12px 14px; }
+.hint-text { font-size: 12px; color: var(--muted-foreground); margin-top: 4px; }
 
 .primary-button { width: 100%; border: none; border-radius: var(--radius-lg); padding: 14px 16px; background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 55%), var(--primary); color: var(--primary-foreground); font-size: 16px; font-weight: 700; text-align: center; box-shadow: 0 0 18px rgba(255, 215, 0, 0.55); cursor: pointer; }
 .dots { display: flex; justify-content: center; gap: 6px; }

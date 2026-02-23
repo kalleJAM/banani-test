@@ -74,11 +74,15 @@
             </div>
           </div>
 
-          <div class="result-section" aria-label="Tapping-Test Ergebnis eingeben">
-            <div class="result-label">Ergebnis eingeben (Anzahl Tapps):</div>
-            <div class="result-input-card" @click="enterResult">
-              <div class="result-value">{{ tappsCount !== null ? tappsCount + ' Tapps' : '___ Tapps' }}</div>
-            </div>
+          <div class="result-section app-input-wrap" aria-label="Tapping-Test Ergebnis eingeben">
+            <span class="app-input-label">Ergebnis eingeben (Anzahl Tapps)</span>
+            <input
+              v-model="tappsCount"
+              type="number"
+              class="app-input"
+              placeholder="Anzahl Tapps"
+              min="0"
+            />
           </div>
         </section>
 
@@ -100,7 +104,7 @@ const router = useRouter()
 const recording = ref(false)
 const timerSeconds = ref(0)
 let timerId = null
-const tappsCount = ref(null)
+const tappsCount = ref('')
 
 const timerDisplay = computed(() => {
   const s = timerSeconds.value
@@ -125,14 +129,6 @@ function toggleRecord() {
     timerId = setInterval(() => { timerSeconds.value++ }, 1000)
   } else {
     if (timerId) clearInterval(timerId)
-  }
-}
-
-function enterResult() {
-  const val = prompt('Anzahl Tapps:', tappsCount.value != null ? String(tappsCount.value) : '')
-  if (val != null && val !== '') {
-    const n = parseInt(val.replace(/\D/g, ''), 10)
-    if (!isNaN(n)) tappsCount.value = n
   }
 }
 
@@ -192,9 +188,6 @@ onUnmounted(() => {
 .record-label { white-space: nowrap; }
 
 .result-section { display: flex; flex-direction: column; gap: 6px; }
-.result-label { font-size: 14px; color: var(--foreground); }
-.result-input-card { padding: 12px 14px; border-radius: var(--radius-lg); background-color: var(--card); cursor: pointer; }
-.result-value { font-size: 18px; font-weight: 700; }
 
 .primary-button { width: 100%; border: none; border-radius: var(--radius-lg); padding: 14px 16px; background: radial-gradient(circle at top, rgba(255, 255, 255, 0.16), transparent 55%), var(--primary); color: var(--primary-foreground); font-size: 16px; font-weight: 700; text-align: center; box-shadow: 0 0 18px rgba(255, 215, 0, 0.45); cursor: pointer; }
 </style>
