@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -91,8 +91,9 @@ const COLOR_KEYS = ['red', 'blue', 'green', 'yellow']
 const totalRounds = ref(20)
 const round = ref(0)
 const currentWordText = ref('GRÜN')
-const currentWordColor = ref(COLORS.red)
+const currentColorKey = ref('red')
 const score = ref(0)
+const currentWordColor = computed(() => COLORS[currentColorKey.value])
 
 const answerOptions = [
   { label: 'Rot', className: 'red', color: 'red' },
@@ -109,7 +110,7 @@ function randomItem(arr) {
 
 function nextWord() {
   currentWordText.value = randomItem(WORDS)
-  currentWordColor.value = COLORS[randomItem(COLOR_KEYS)]
+  currentColorKey.value = randomItem(COLOR_KEYS)
 }
 
 function goToTests() {
@@ -122,14 +123,8 @@ function goToSports() {
 
 function playVideo() {}
 
-function colorKeyToLabel(key) {
-  const map = { red: 'Rot', blue: 'Blau', green: 'Grün', yellow: 'Gelb' }
-  return map[key]
-}
-
 function chooseAnswer(pickedColor) {
-  const wordColorKey = Object.keys(COLORS).find(k => COLORS[k] === currentWordColor.value)
-  if (wordColorKey === pickedColor) score.value++
+  if (currentColorKey.value === pickedColor) score.value++
   round.value++
   if (round.value >= totalRounds.value) {
     setTimeout(() => {
