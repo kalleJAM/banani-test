@@ -22,58 +22,52 @@
 
           <div class="progress-section">
             <div class="progress-header">
-              <span class="progress-label">3 von 5 abgeschlossen</span>
+              <span class="progress-label">{{ completedCount }} von 5 abgeschlossen</span>
             </div>
             <div class="progress-bar-wrapper">
               <div class="progress-bar-track">
-                <div class="progress-bar-fill" style="width: 71%"></div>
+                <div class="progress-bar-fill" :style="{ width: progressPercent + '%' }"></div>
               </div>
             </div>
           </div>
 
           <div class="tests-list" aria-label="Test Checkliste">
-            <div class="test-item completed">
-              <div class="test-status">✓</div>
-              <div class="test-text">Körpermaße messen</div>
-              <div class="test-meta">Abgeschlossen</div>
-            </div>
-
-            <div class="test-item completed">
-              <div class="test-status">✓</div>
-              <div class="test-text">Seitwärtssprung</div>
-              <div class="test-meta">Abgeschlossen</div>
-            </div>
-
-            <div class="test-item completed">
-              <div class="test-status">✓</div>
-              <div class="test-text">Schlussweitsprung</div>
-              <div class="test-meta">Abgeschlossen</div>
-            </div>
-
-            <div class="test-item current">
-              <div class="current-indicator"></div>
-              <div class="test-main">
-                <div class="test-status-icon">
-                  <span>⚡</span>
+            <div
+              v-for="(t, i) in tests"
+              :key="t.path"
+              class="test-item"
+              :class="{ completed: t.completed, current: t.current, upcoming: t.upcoming }"
+              @click="goToTest(t.path)"
+            >
+              <template v-if="t.completed">
+                <div class="test-status">✓</div>
+                <div class="test-text">{{ t.name }}</div>
+                <div class="test-meta">Abgeschlossen</div>
+              </template>
+              <template v-else-if="t.current">
+                <div class="current-indicator"></div>
+                <div class="test-main">
+                  <div class="test-status-icon">
+                    <span>{{ t.emoji }}</span>
+                  </div>
+                  <div class="test-info">
+                    <div class="test-text">{{ t.name }}</div>
+                    <div class="test-meta current-meta">Aktueller Test</div>
+                  </div>
                 </div>
-                <div class="test-info">
-                  <div class="test-text">Tapping</div>
-                  <div class="test-meta current-meta">Aktueller Test</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="test-item upcoming">
-              <div class="test-status">⏳</div>
-              <div class="test-text">Stroop-Test</div>
-              <div class="test-meta">Noch offen</div>
+              </template>
+              <template v-else>
+                <div class="test-status">⏳</div>
+                <div class="test-text">{{ t.name }}</div>
+                <div class="test-meta">Noch offen</div>
+              </template>
             </div>
           </div>
         </section>
 
         <footer class="footer">
           <button class="primary-button" type="button" @click="startNextTest">
-            Nächsten Test starten
+            {{ nextTestLabel }}
           </button>
           <div class="dots" aria-label="Fortschritt 7 von 9">
             <span class="dot"></span>
@@ -93,21 +87,44 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const goToDashboard = () => {
+const tests = ref([
+  { name: 'Körpermaße messen', path: 22, completed: true, current: false, upcoming: false, emoji: '📏' },
+  { name: 'Seitwärtssprung', path: 23, completed: true, current: false, upcoming: false, emoji: '↔️' },
+  { name: 'Schlussweitsprung', path: 24, completed: true, current: false, upcoming: false, emoji: '🏃‍♂️' },
+  { name: 'Tapping', path: 25, completed: false, current: true, upcoming: false, emoji: '⚡' },
+  { name: 'Stroop-Test', path: 26, completed: false, current: false, upcoming: true, emoji: '🧠' }
+])
+
+const completedCount = computed(() => tests.value.filter(t => t.completed).length)
+const progressPercent = computed(() => (completedCount.value / 5) * 100)
+const currentTest = computed(() => tests.value.find(t => t.current))
+const nextTestLabel = computed(() => {
+  const cur = currentTest.value
+  if (cur) return 'Nächsten Test starten'
+  const next = tests.value.find(t => !t.completed)
+  return next ? next.name + ' starten' : 'Alle erledigt'
+})
+
+function goToDashboard() {
   router.push('/screen/11')
 }
 
-const goToSports = () => {
+function goToSports() {
   router.push('/screen/19')
 }
 
-const startNextTest = () => {
-  // Platzhalter: Tapping-Test-Screen existiert noch nicht
-  router.push('/screen/21')
+function goToTest(path) {
+  router.push('/screen/' + path)
+}
+
+function startNextTest() {
+  const next = currentTest.value || tests.value.find(t => !t.completed)
+  if (next) router.push('/screen/' + next.path)
 }
 </script>
 
@@ -269,6 +286,7 @@ const startNextTest = () => {
   padding: 12px 14px;
   border-radius: var(--radius-lg);
   background-color: var(--card);
+  cursor: pointer;
 }
 
 .test-status {
