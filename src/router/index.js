@@ -27,7 +27,8 @@ const screens = [
   { id: 25, name: 'Tapping-Test', path: '/screen/25', component: 'TappingTest' },
   { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' },
   { id: 27, name: 'Sport-Avatar Top', path: '/screen/27', component: 'SportAvatarTop' },
-  { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'GoldenPicture' }
+  { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'GoldenPicture' },
+  { id: 29, name: 'Golden Point Termin', path: '/screen/29', component: 'GoldenPointTermin' }
 ]
 
 export { screens }

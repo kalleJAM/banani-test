@@ -148,7 +148,7 @@ function goToSports() {
 function playVideo() {}
 
 function bookTermin() {
-  alert('Termin buchen wird geöffnet')
+  router.push('/screen/29')
 }
 </script>
 
