@@ -20,7 +20,12 @@ const screens = [
   { id: 17, name: 'Sportarten-Übersicht', path: '/screen/17', component: 'SportartenUebersicht' },
   { id: 19, name: 'Wohnzimmer-Test Paywall', path: '/screen/19', component: 'WohnzimmerPaywall' },
   { id: 20, name: 'Kauf erfolgreich', path: '/screen/20', component: 'KaufErfolgreich' },
-  { id: 21, name: 'Wohnzimmer-Test Übersicht', path: '/screen/21', component: 'WohnzimmerTestUebersicht' }
+  { id: 21, name: 'Wohnzimmer-Test Übersicht', path: '/screen/21', component: 'WohnzimmerTestUebersicht' },
+  { id: 22, name: 'Körpermaße messen', path: '/screen/22', component: 'KoerpermasseMessen' },
+  { id: 23, name: 'Seitwärtssprung', path: '/screen/23', component: 'Seitwaertssprung' },
+  { id: 24, name: 'Schlussweitsprung', path: '/screen/24', component: 'Schlussweitsprung' },
+  { id: 25, name: 'Tapping-Test', path: '/screen/25', component: 'TappingTest' },
+  { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' }
 ]
 
 export { screens }
