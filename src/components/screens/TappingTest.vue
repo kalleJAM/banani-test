@@ -133,7 +133,7 @@ function toggleRecord() {
 }
 
 function save() {
-  router.push('/screen/21')
+  router.push('/screen/11')
 }
 
 onUnmounted(() => {
