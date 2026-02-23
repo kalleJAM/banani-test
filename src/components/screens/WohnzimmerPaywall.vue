@@ -74,7 +74,7 @@
                 <span class="pricing-price">4,95&nbsp;€</span>
                 <span class="pricing-per">pro Kind</span>
               </div>
-              <button class="primary-button inside" type="button">
+              <button class="primary-button inside" type="button" @click="goToSuccess">
                 🛒 Jetzt kaufen
               </button>
             </div>
@@ -168,6 +168,10 @@ const router = useRouter()
 
 const goBack = () => {
   router.back()
+}
+
+const goToSuccess = () => {
+  router.push('/screen/20')
 }
 </script>
 

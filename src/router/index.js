@@ -18,8 +18,8 @@ const screens = [
   { id: 15, name: 'Ergebnis-Optionen', path: '/screen/15', component: 'ErgebnisOptionen' },
   { id: 16, name: 'Prognose', path: '/screen/16', component: 'Prognose' },
   { id: 17, name: 'Sportarten-Übersicht', path: '/screen/17', component: 'SportartenUebersicht' },
-  { id: 18, name: 'Schlussweitsprung Test', path: '/screen/18', component: 'SchlussweitsprungTest' },
-  { id: 19, name: 'Wohnzimmer-Test Paywall', path: '/screen/19', component: 'WohnzimmerPaywall' }
+  { id: 20, name: 'Wohnzimmer-Test Paywall', path: '/screen/19', component: 'WohnzimmerPaywall' },
+  { id: 20, name: 'Kauf erfolgreich', path: '/screen/20', component: 'KaufErfolgreich' }
 ]
 
 export { screens }
