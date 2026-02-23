@@ -191,7 +191,7 @@ function goToSports() {
 }
 
 function showFullList() {
-  alert('Komplette Sportarten-Liste wird angezeigt')
+  router.push('/screen/27')
 }
 
 function handleShare() {

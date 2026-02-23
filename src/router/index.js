@@ -25,7 +25,8 @@ const screens = [
   { id: 23, name: 'Seitwärtssprung', path: '/screen/23', component: 'Seitwaertssprung' },
   { id: 24, name: 'Schlussweitsprung', path: '/screen/24', component: 'Schlussweitsprung' },
   { id: 25, name: 'Tapping-Test', path: '/screen/25', component: 'TappingTest' },
-  { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' }
+  { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' },
+  { id: 27, name: 'Sport-Avatar Top', path: '/screen/27', component: 'SportAvatarTop' }
 ]
 
 export { screens }
