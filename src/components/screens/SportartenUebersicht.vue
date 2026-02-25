@@ -228,7 +228,7 @@ const goToSports = () => {
 }
 
 const handleSportClick = (sportName) => {
-  alert(`${sportName} Details werden angezeigt`)
+  router.push({ path: '/screen/31', query: { sport: sportName } })
 }
 </script>
 
