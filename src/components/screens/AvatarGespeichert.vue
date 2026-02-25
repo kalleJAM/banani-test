@@ -2,21 +2,7 @@
   <div class="screen-wrapper">
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Avatar gespeichert">
-        <section class="top-bar">
-          <div class="top-left" @click="goToPrev">
-            <div class="icon-wrapper">
-              <iconify-icon
-                icon="lucide:arrow-left"
-                style="font-size: 22px; color: var(--foreground)"
-              ></iconify-icon>
-            </div>
-          </div>
-          <div class="top-right-logo" @click="goToSports">
-            <div class="logo-mark-small">
-              <span class="logo-4">4</span><span class="logo-talents">talents</span>
-            </div>
-          </div>
-        </section>
+        <ScreenTopBar />
 
         <section class="content">
           <header class="section-header">
@@ -91,16 +77,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
-
-const goToPrev = () => {
-  router.back()
-}
-
-const goToSports = () => {
-  router.push('/screen/19')
-}
 
 const handleContinue = () => {
   router.push('/screen/15')

@@ -3,12 +3,7 @@
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Wohnzimmer-Test Übersicht">
         <header class="header">
-          <button class="back-button" type="button" @click="goToDashboard">
-            <span class="back-arrow">← Dashboard</span>
-          </button>
-          <div class="logo-mark header-logo" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
+          <ScreenTopBar />
         </header>
 
         <section class="content">
@@ -89,6 +84,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
 
@@ -110,13 +106,6 @@ const nextTestLabel = computed(() => {
   return next ? next.name + ' starten' : 'Alle erledigt'
 })
 
-function goToDashboard() {
-  router.push('/screen/11')
-}
-
-function goToSports() {
-  router.push('/screen/19')
-}
 
 function goToTest(path) {
   router.push('/screen/' + path)

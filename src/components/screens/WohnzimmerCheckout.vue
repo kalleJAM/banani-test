@@ -2,14 +2,7 @@
   <div class="screen-wrapper">
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Wohnzimmer-Test Kaufabschluss">
-        <header class="top-bar">
-          <button class="icon-button" type="button" @click="goBack" aria-label="Zurück">
-            <span class="icon-chevron">◀</span>
-          </button>
-          <div class="logo-mark" @click="goToPaywall">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
-        </header>
+        <ScreenTopBar />
 
         <section class="content" id="checkout-content">
           <h1 class="screen-title">🛒 Wohnzimmer-Test kaufen</h1>
@@ -155,12 +148,11 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
 const selectedPayment = ref('apple')
 
-const goBack = () => router.back()
-const goToPaywall = () => router.push('/screen/19')
 const handlePay = () => router.push('/screen/20')
 </script>
 

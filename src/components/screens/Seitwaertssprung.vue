@@ -3,12 +3,7 @@
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Seitwärtssprung nach Bös Test">
         <header class="header">
-          <button class="back-button" type="button" @click="goToTests">
-            <span class="back-arrow">← Tests</span>
-          </button>
-          <div class="logo-mark header-logo" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
+          <ScreenTopBar />
         </header>
 
         <section class="content">
@@ -81,6 +76,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
 const attempt1 = ref('')
@@ -94,14 +90,6 @@ const bestResult = computed(() => {
   if (b > 0) return b
   return '–'
 })
-
-function goToTests() {
-  router.push('/screen/21')
-}
-
-function goToSports() {
-  router.push('/screen/19')
-}
 
 function playVideo() {}
 

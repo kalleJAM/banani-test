@@ -3,12 +3,7 @@
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Ergebnisse Dashboard">
         <header class="header">
-          <button class="back-button" type="button" @click="goBack">
-            <span class="back-arrow">← Dashboard</span>
-          </button>
-          <div class="logo-mark header-logo" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
+          <ScreenTopBar />
         </header>
 
         <section class="content">
@@ -179,16 +174,10 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
 
-function goBack() {
-  router.back()
-}
-
-function goToSports() {
-  router.push('/screen/19')
-}
 
 function showFullList() {
   router.push('/screen/27')

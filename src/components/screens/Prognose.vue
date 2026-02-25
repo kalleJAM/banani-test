@@ -2,15 +2,7 @@
   <div class="screen-wrapper">
     <div id="app-root-29" class="app-root">
       <main class="screen" aria-label="4talents Prognose">
-        <header class="top-bar">
-          <button class="icon-button" @click="goToPrev">
-            <span class="icon-chevron">◀</span>
-            <span class="back-label">Dashboard</span>
-          </button>
-          <div class="logo-mark" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
-        </header>
+        <ScreenTopBar />
 
         <section class="content">
           <h1 class="screen-title">🔮 Deine Prognose</h1>
@@ -58,16 +50,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
-
-const goToPrev = () => {
-  router.back()
-}
-
-const goToSports = () => {
-  router.push('/screen/19')
-}
 
 const handleViewSports = () => {
   router.push('/screen/17')

@@ -13,11 +13,7 @@
           </div>
         </div>
 
-        <section class="top-bar">
-          <div class="logo-mark" @click="goToStart">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
-        </section>
+        <ScreenTopBar :show-back="false" />
 
         <section class="content">
           <div class="intro-block">
@@ -103,12 +99,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
-
-const goToStart = () => {
-  router.push('/screen/1')
-}
 
 const handleStartAccount = () => {
   router.push('/screen/2')

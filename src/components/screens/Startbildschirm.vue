@@ -14,9 +14,7 @@
         </div>
 
         <section class="top-logo">
-          <div class="logo-mark" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
+          <AppLogo />
         </section>
 
         <section class="content">
@@ -86,12 +84,9 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { AppLogo } from '../shared'
 
 const router = useRouter()
-
-const goToSports = () => {
-  router.push('/screen/19')
-}
 
 const handleStart = () => {
   router.push('/screen/2')

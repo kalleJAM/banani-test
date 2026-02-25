@@ -3,12 +3,7 @@
     <div id="app-root" class="app-root">
       <main class="screen" aria-label="4talents Tapping-Test mit Kamera">
         <header class="header">
-          <button class="back-button" type="button" @click="goToTests">
-            <span class="back-arrow">← Tests</span>
-          </button>
-          <div class="logo-mark header-logo" @click="goToSports">
-            <span class="logo-4">4</span><span class="logo-talents">talents</span>
-          </div>
+          <ScreenTopBar />
         </header>
 
         <section class="content">
@@ -99,6 +94,7 @@
 <script setup>
 import { ref, computed, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { ScreenTopBar } from '../shared'
 
 const router = useRouter()
 const recording = ref(false)
@@ -113,13 +109,6 @@ const timerDisplay = computed(() => {
   return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}:00.00`
 })
 
-function goToTests() {
-  router.push('/screen/21')
-}
-
-function goToSports() {
-  router.push('/screen/19')
-}
 
 function playVideo() {}
 
