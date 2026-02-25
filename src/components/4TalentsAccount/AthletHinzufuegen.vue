@@ -116,7 +116,7 @@ const triggerAvatarUpload = () => {
 }
 
 const onSave = () => {
-  router.push('/screen/38')
+  router.push('/screen/40')
 }
 </script>
 

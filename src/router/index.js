@@ -38,7 +38,8 @@ const screens = [
   { id: 36, name: '4talents Start (Landing)', path: '/screen/36', component: '4TalentsAccount/StartLanding' },
   { id: 37, name: 'Account erstellen (Signup)', path: '/screen/37', component: '4TalentsAccount/Signup' },
   { id: 38, name: 'Eltern Dashboard', path: '/screen/38', component: '4TalentsAccount/ElternDashboard' },
-  { id: 39, name: 'Athlet hinzufügen', path: '/screen/39', component: '4TalentsAccount/AthletHinzufuegen' }
+  { id: 39, name: 'Athlet hinzufügen', path: '/screen/39', component: '4TalentsAccount/AthletHinzufuegen' },
+  { id: 40, name: 'Spieler hinzufügen', path: '/screen/40', component: '4TalentsAccount/SpielerHinzufuegen' }
 ]
 
 export { screens }
@@ -63,15 +64,20 @@ function nameToRouteName (name) {
   return parts.map(p => p.charAt(0).toUpperCase() + p.slice(1).toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')).join('')
 }
 
-const screenRoutes = screens.map(screen => ({
-  path: screen.path,
-  name: nameToRouteName(screen.name),
-  component: getScreenComponent(screen.component),
-  meta: {
-    title: screen.name,
-    screenId: screen.id
+const screenRoutes = screens.map(screen => {
+  const component = screen.id === 40
+    ? () => import('../components/4TalentsAccount/SpielerHinzufuegen.vue')
+    : getScreenComponent(screen.component)
+  return {
+    path: screen.path,
+    name: nameToRouteName(screen.name),
+    component,
+    meta: {
+      title: screen.name,
+      screenId: screen.id
+    }
   }
-}))
+})
 
 const routes = [
   {
