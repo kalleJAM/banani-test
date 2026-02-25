@@ -70,11 +70,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goAddAthlete = () => {
-  router.push('/screen/38')
+  router.push('/screen/39')
 }
 
 const goResults = () => {
-  router.push('/screen/38')
+  router.push('/screen/28')
 }
 </script>
 

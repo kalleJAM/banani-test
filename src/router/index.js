@@ -37,7 +37,8 @@ const screens = [
   { id: 35, name: 'Golden Point Zahlung erfolgreich', path: '/screen/35', component: 'findyoursports/GoldenPointPaymentSuccess' },
   { id: 36, name: '4talents Start (Landing)', path: '/screen/36', component: '4TalentsAccount/StartLanding' },
   { id: 37, name: 'Account erstellen (Signup)', path: '/screen/37', component: '4TalentsAccount/Signup' },
-  { id: 38, name: 'Eltern Dashboard', path: '/screen/38', component: '4TalentsAccount/ElternDashboard' }
+  { id: 38, name: 'Eltern Dashboard', path: '/screen/38', component: '4TalentsAccount/ElternDashboard' },
+  { id: 39, name: 'Athlet hinzufügen', path: '/screen/39', component: '4TalentsAccount/AthletHinzufuegen' }
 ]
 
 export { screens }
