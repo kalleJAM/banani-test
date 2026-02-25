@@ -50,17 +50,17 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goBack = () => {
-  router.push('/screen/38')
+  router.push('/screen/39')
 }
 
 const onJa = () => {
-  // Platzhalter – später z.B. zu Ergebnissen/Verknüpfung
-  router.push('/screen/38')
+ 
+  router.push('/screen/41')
 }
 
 const onNein = () => {
-  // Platzhalter – später z.B. zu Testung starten
-  router.push('/screen/38')
+ 
+  router.push('/screen/42')
 }
 </script>
 
