@@ -20,20 +20,63 @@
         </section>
 
         <section class="content">
-          <h1 class="headline">
-            Finde deinen Sport & zeig, was in dir steckt
-          </h1>
-          <p class="subheadline">
-            Wir helfen dir, Sportarten zu entdecken, die richtig Spaß machen
-            und zu deinen Stärken passen.
-          </p>
+          <div class="entry-block entry-block-primary">
+            <p class="entry-label">Für alle, die uns zufällig entdecken</p>
+            <h1 class="headline">
+              Finde deinen Sport & zeig, was in dir steckt
+            </h1>
+            <p class="subheadline">
+              Wir helfen dir, Sportarten zu entdecken, die richtig Spaß machen
+              und zu deinen Stärken passen.
+            </p>
 
-          <div class="cta-wrapper">
-            <div class="primary-cta" @click="handleStart">
-              <span class="primary-cta-label">
-                Starte jetzt & entdecke deine Begabung
-              </span>
+            <div class="cta-wrapper">
+              <div class="primary-cta" @click="handleStart">
+                <span class="primary-cta-label">
+                  Starte jetzt & entdecke deine Begabung
+                </span>
+              </div>
             </div>
+          </div>
+
+          <div class="entry-divider">
+            <div class="divider-line"></div>
+            <span class="divider-text">oder</span>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="entry-block entry-block-org">
+            <p class="entry-label">
+              Für alle, die über eine Sportorganisation kommen
+            </p>
+            <h2 class="headline-org">
+              Du bist über einen Verein, Verband oder eine Schule hier?
+            </h2>
+            <p class="subheadline-org">
+              Super! Dann kannst du den 4talents Account gemeinsam mit deiner
+              Sportorganisation nutzen.
+            </p>
+            <div class="cta-wrapper">
+              <div class="secondary-cta" @click="handleOrgStart">
+                <span class="secondary-cta-label">
+                  Mit Sportorganisation starten
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="bottom-progress">
+          <div class="dots" aria-label="Onboarding Fortschritt">
+            <span class="dot dot-active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
           </div>
         </section>
       </main>
@@ -46,12 +89,16 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-
 const goToSports = () => {
   router.push('/screen/19')
 }
+
 const handleStart = () => {
   router.push('/screen/2')
+}
+
+const handleOrgStart = () => {
+  router.push('/screen/30')
 }
 </script>
 
@@ -64,8 +111,6 @@ const handleStart = () => {
 .top-logo {
   padding-top: 4px;
   padding-bottom: 32px;
-  display: flex;
-  justify-content: flex-end;
   position: relative;
   z-index: 20;
 }
@@ -75,7 +120,7 @@ const handleStart = () => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 24px;
+  gap: 20px;
   position: relative;
   z-index: 5;
 }
@@ -134,6 +179,29 @@ const handleStart = () => {
   color: var(--muted-foreground);
 }
 
+.entry-label {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.headline-org {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.subheadline-org {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
 .cta-wrapper {
   margin-top: 12px;
 }
@@ -164,13 +232,84 @@ const handleStart = () => {
   font-size: 16px;
   font-weight: 600;
   color: var(--primary-foreground);
+  white-space: normal;
+  text-align: center;
+}
+
+.secondary-cta {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondary-cta:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.secondary-cta-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--foreground);
   white-space: nowrap;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
 }
 
 .dot {
   width: 5px;
   height: 5px;
+  border-radius: 999px;
   background-color: #333333;
+}
+
+.dot-active {
+  background-color: var(--primary);
+}
+
+.entry-block {
+  position: relative;
+  padding: 16px 14px 16px 14px;
+  border-radius: var(--radius-xl);
+  background-color: rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(10px);
+}
+
+.entry-block-primary {
+  border: 1px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
+}
+
+.entry-block-org {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.entry-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.divider-text {
+  font-size: 12px;
+  color: var(--muted-foreground);
 }
 
 .bg-pattern {

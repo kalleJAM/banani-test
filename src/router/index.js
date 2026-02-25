@@ -28,7 +28,8 @@ const screens = [
   { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' },
   { id: 27, name: 'Sport-Avatar Top', path: '/screen/27', component: 'SportAvatarTop' },
   { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'GoldenPicture' },
-  { id: 29, name: 'Golden Point Termin', path: '/screen/29', component: 'GoldenPointTermin' }
+  { id: 29, name: 'Golden Point Termin', path: '/screen/29', component: 'GoldenPointTermin' },
+  { id: 30, name: 'QR- oder Link-Start', path: '/screen/30', component: 'QrLinkStart' }
 ]
 
 export { screens }
