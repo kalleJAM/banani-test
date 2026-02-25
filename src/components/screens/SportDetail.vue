@@ -69,9 +69,9 @@
               <li>deutlich präzisere Sportarten-Empfehlungen</li>
             </ul>
             <div class="cta-row">
-              <div class="primary-button" @click="handleWohnzimmerTest">
+              <button type="button" class="primary-button" @click="handleWohnzimmerTest">
                 Wohnzimmer-Test starten
-              </div>
+              </button>
               <div class="secondary-link" @click="goToPrev">
                 Später entscheiden
               </div>

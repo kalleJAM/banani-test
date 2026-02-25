@@ -30,7 +30,8 @@ const screens = [
   { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'GoldenPicture' },
   { id: 29, name: 'Golden Point Termin', path: '/screen/29', component: 'GoldenPointTermin' },
   { id: 30, name: 'QR- oder Link-Start', path: '/screen/30', component: 'QrLinkStart' },
-  { id: 31, name: 'Sport-Detail', path: '/screen/31', component: 'SportDetail' }
+  { id: 31, name: 'Sport-Detail', path: '/screen/31', component: 'SportDetail' },
+  { id: 32, name: 'Wohnzimmer-Test Kaufabschluss', path: '/screen/32', component: 'WohnzimmerCheckout' }
 ]
 
 export { screens }
