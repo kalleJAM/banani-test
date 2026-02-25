@@ -180,7 +180,7 @@ const router = useRouter()
 
 
 function showFullList() {
-  router.push('/screen/27')
+  router.push('/screen/33')
 }
 
 function handleShare() {

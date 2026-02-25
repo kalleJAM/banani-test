@@ -27,11 +27,12 @@ const screens = [
   { id: 25, name: 'Tapping-Test', path: '/screen/25', component: 'TappingTest' },
   { id: 26, name: 'Stroop-Test', path: '/screen/26', component: 'StroopTest' },
   { id: 27, name: 'Sport-Avatar Top', path: '/screen/27', component: 'SportAvatarTop' },
-  { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'GoldenPicture' },
+  { id: 28, name: 'Golden Picture', path: '/screen/28', component: 'goldenPicture' },
   { id: 29, name: 'Golden Point Termin', path: '/screen/29', component: 'GoldenPointTermin' },
   { id: 30, name: 'QR- oder Link-Start', path: '/screen/30', component: 'QrLinkStart' },
   { id: 31, name: 'Sport-Detail', path: '/screen/31', component: 'SportDetail' },
-  { id: 32, name: 'Wohnzimmer-Test Kaufabschluss', path: '/screen/32', component: 'WohnzimmerCheckout' }
+  { id: 32, name: 'Wohnzimmer-Test Kaufabschluss', path: '/screen/32', component: 'WohnzimmerCheckout' },
+  { id: 33, name: 'Sport-Matching Detail', path: '/screen/33', component: 'SportMatchingDetail' }
 ]
 
 export { screens }
