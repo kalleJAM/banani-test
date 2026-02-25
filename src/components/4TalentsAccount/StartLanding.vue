@@ -51,11 +51,11 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goAccount = () => {
-  router.push('/screen/5')
+  router.push('/screen/37')
 }
 
 const goLogin = () => {
-  router.push('/screen/2')
+  router.push('/screen/38')
 }
 </script>
 

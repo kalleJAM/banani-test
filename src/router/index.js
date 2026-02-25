@@ -35,7 +35,9 @@ const screens = [
   { id: 33, name: 'Sport-Matching Detail', path: '/screen/33', component: 'findyoursports/SportMatchingDetail' },
   { id: 34, name: 'Golden Point Payment', path: '/screen/34', component: 'findyoursports/GoldenPointPayment' },
   { id: 35, name: 'Golden Point Zahlung erfolgreich', path: '/screen/35', component: 'findyoursports/GoldenPointPaymentSuccess' },
-  { id: 36, name: '4talents Start (Landing)', path: '/screen/36', component: '4TalentsAccount/StartLanding' }
+  { id: 36, name: '4talents Start (Landing)', path: '/screen/36', component: '4TalentsAccount/StartLanding' },
+  { id: 37, name: 'Account erstellen (Signup)', path: '/screen/37', component: '4TalentsAccount/Signup' },
+  { id: 38, name: 'Eltern Dashboard', path: '/screen/38', component: '4TalentsAccount/ElternDashboard' }
 ]
 
 export { screens }
