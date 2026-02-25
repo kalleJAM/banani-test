@@ -86,7 +86,7 @@ const router = useRouter()
 
 
 function handleContinue() {
-  router.push('/screen/17')
+  router.push('/screen/11')
 }
 </script>
 

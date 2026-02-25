@@ -117,7 +117,7 @@ const progressPercent = computed(() => 20)
 function playVideo() {}
 
 function save() {
-  router.push('/screen/21')
+  router.push('/screen/23')
 }
 </script>
 

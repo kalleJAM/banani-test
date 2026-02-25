@@ -82,7 +82,7 @@ import { ScreenTopBar } from '../shared'
 const router = useRouter()
 
 const handleContinue = () => {
-  router.push('/screen/15')
+  router.push('/screen/16')
 }
 
 const handleLater = () => {

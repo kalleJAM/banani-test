@@ -113,7 +113,7 @@ function goToTest(path) {
 
 function startNextTest() {
   const next = currentTest.value || tests.value.find(t => !t.completed)
-  if (next) router.push('/screen/' + next.path)
+  if (next) router.push('/screen/27')
 }
 </script>
 

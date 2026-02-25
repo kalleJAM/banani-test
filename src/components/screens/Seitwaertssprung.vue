@@ -94,7 +94,7 @@ const bestResult = computed(() => {
 function playVideo() {}
 
 function save() {
-  router.push('/screen/21')
+  router.push('/screen/24')
 }
 </script>
 

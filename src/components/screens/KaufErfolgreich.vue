@@ -38,7 +38,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const startTests = () => {
-  router.push('/screen/21')
+  router.push('/screen/22')
 }
 </script>
 
