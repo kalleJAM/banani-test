@@ -13,6 +13,21 @@
     <div class="screen-list-overlay" v-if="showMenu" @click="showMenu = false">
       <div class="screen-list" @click.stop>
         <h2>Alle Screens</h2>
+        <div class="screen-list-jump">
+          <label for="jump-to-screen">Zu Screen springen:</label>
+          <div class="screen-list-jump-row">
+            <input
+              id="jump-to-screen"
+              v-model.number="jumpToScreenId"
+              type="number"
+              min="1"
+              :max="maxScreenId"
+              placeholder="z.B. 50"
+              @keydown.enter="jumpToScreen"
+            />
+            <button type="button" class="jump-btn" @click="jumpToScreen">Go</button>
+          </div>
+        </div>
         <div class="screen-list-items">
           <button
             v-for="screen in displayScreens"
@@ -39,6 +54,9 @@ import { screens } from './router'
 const router = useRouter()
 const route = useRoute()
 const showMenu = ref(false)
+const jumpToScreenId = ref(null)
+
+const maxScreenId = computed(() => Math.max(...screens.map(s => s.id), 1))
 
 const currentScreenId = computed(() => {
   const match = route.path.match(/\/screen\/(\d+)/)
@@ -77,6 +95,14 @@ function isScreenActive(screen) {
 function goToScreen(path) {
   router.push(path)
   showMenu.value = false
+}
+
+function jumpToScreen() {
+  const id = jumpToScreenId.value
+  if (id >= 1 && id <= maxScreenId.value && screens.some(s => s.id === id)) {
+    router.push(`/screen/${id}`)
+    showMenu.value = false
+  }
 }
 
 const screenIds = screens.map(s => s.id).sort((a, b) => a - b)
@@ -188,6 +214,53 @@ onUnmounted(() => {
   color: #ffd700;
   margin-bottom: 16px;
   font-size: 20px;
+}
+
+.screen-list-jump {
+  margin-bottom: 16px;
+}
+
+.screen-list-jump label {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.screen-list-jump-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.screen-list-jump input {
+  width: 80px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 14px;
+}
+
+.screen-list-jump input:focus {
+  outline: none;
+  border-color: #ffd700;
+}
+
+.jump-btn {
+  padding: 8px 14px;
+  background: #ffd700;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.jump-btn:hover {
+  opacity: 0.9;
 }
 
 .screen-list-items {

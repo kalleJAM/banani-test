@@ -95,7 +95,7 @@ const triggerUpload = () => {
 }
 
 const onSubmit = () => {
-  router.push('/screen/38')
+  router.push('/screen/49')
 }
 </script>
 

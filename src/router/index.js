@@ -47,7 +47,8 @@ const screens = [
   { id: 45, name: 'E-Mail Bestätigung', path: '/screen/45', component: '4TalentsAccount/EmailBestaetigungSpieler' },
   { id: 46, name: 'Berechtigungsprüfung', path: '/screen/46', component: '4TalentsAccount/Berechtigungspruefung' },
   { id: 47, name: 'Support Anfrage', path: '/screen/47', component: '4TalentsAccount/SupportAnfrage' },
-  { id: 48, name: 'Nicht berechtigt', path: '/screen/48', component: '4TalentsAccount/NichtBerechtigt' }
+  { id: 48, name: 'Nicht berechtigt', path: '/screen/48', component: '4TalentsAccount/NichtBerechtigt' },
+  { id: 49, name: 'Spieler erfolgreich registriert', path: '/screen/49', component: '4TalentsAccount/SpielerErfolgreichRegistriert' }
 ]
 
 export { screens }
@@ -65,11 +66,19 @@ function getScreenComponent (componentPath) {
   return loader
 }
 
-/** Lazy loader: 4TalentsAccount per dynamischem Import (skalierbar), Rest über Glob. */
+/** Lazy loader: 4TalentsAccount über Glob (Keys können / oder \ sein). */
 function getComponentLoader (componentPath) {
   if (componentPath.startsWith('4TalentsAccount/')) {
     const name = componentPath.replace('4TalentsAccount/', '')
-    return () => import(`../components/4TalentsAccount/${name}.vue`)
+    const key = `../components/4TalentsAccount/${name}.vue`
+    let loader = accountModules[key] || accountModules[key.replace(/\//g, '\\')]
+    if (!loader) {
+      const foundKey = Object.keys(accountModules).find(k => k.endsWith(name + '.vue') || k.endsWith(name.replace(/\//g, '\\') + '.vue'))
+      if (foundKey) loader = accountModules[foundKey]
+    }
+    if (loader) return loader
+    console.warn('Screen component not in glob:', name)
+    return () => Promise.resolve({ template: '<div>Screen nicht gefunden: ' + name + '</div>' })
   }
   return getScreenComponent(componentPath)
 }
