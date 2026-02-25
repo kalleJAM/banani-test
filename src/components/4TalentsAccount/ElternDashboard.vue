@@ -45,7 +45,7 @@
           <iconify-icon icon="lucide:home" class="nav-icon" />
           <span>Home</span>
         </button>
-        <button type="button" class="nav-item">
+        <button type="button" class="nav-item" @click="goAthleten">
           <iconify-icon icon="lucide:users" class="nav-icon" />
           <span>Athleten</span>
         </button>
@@ -71,6 +71,10 @@ const router = useRouter()
 
 const goAddAthlete = () => {
   router.push('/screen/39')
+}
+
+const goAthleten = () => {
+  router.push('/screen/50')
 }
 
 const goResults = () => {

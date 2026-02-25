@@ -48,7 +48,8 @@ const screens = [
   { id: 46, name: 'Berechtigungsprüfung', path: '/screen/46', component: '4TalentsAccount/Berechtigungspruefung' },
   { id: 47, name: 'Support Anfrage', path: '/screen/47', component: '4TalentsAccount/SupportAnfrage' },
   { id: 48, name: 'Nicht berechtigt', path: '/screen/48', component: '4TalentsAccount/NichtBerechtigt' },
-  { id: 49, name: 'Spieler erfolgreich registriert', path: '/screen/49', component: '4TalentsAccount/SpielerErfolgreichRegistriert' }
+  { id: 49, name: 'Spieler erfolgreich registriert', path: '/screen/49', component: '4TalentsAccount/SpielerErfolgreichRegistriert' },
+  { id: 50, name: 'Vereinszuordnung', path: '/screen/50', component: '4TalentsAccount/Vereinszuordnung' }
 ]
 
 export { screens }
