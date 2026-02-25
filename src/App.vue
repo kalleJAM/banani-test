@@ -41,8 +41,8 @@ const route = useRoute()
 const showMenu = ref(false)
 
 const currentScreenId = computed(() => {
-  const id = parseInt(route.params.id) || 1
-  return id
+  const match = route.path.match(/\/screen\/(\d+)/)
+  return match ? parseInt(match[1], 10) : 1
 })
 
 const displayScreens = computed(() => {

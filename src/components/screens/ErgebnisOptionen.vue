@@ -65,7 +65,7 @@ const goToSports = () => {
   router.push('/screen/19')
 }
 const goToPrev = () => {
-  router.push('/screen/14')
+  router.back()
 }
 
 const handleViewResults = () => {
@@ -73,7 +73,7 @@ const handleViewResults = () => {
 }
 
 const handleContinue = () => {
-  router.push('/screen/11')
+  router.push('/screen/17')
 }
 </script>
 

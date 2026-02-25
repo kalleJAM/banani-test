@@ -73,7 +73,7 @@ const codeInputs = ref([])
 const resendCooldown = ref(0)
 
 const goToPrev = () => {
-  router.push('/screen/5')
+  router.back()
 }
 
 const goToSports = () => {

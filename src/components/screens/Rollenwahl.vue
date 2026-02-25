@@ -90,7 +90,7 @@ const router = useRouter()
 const selectedRole = ref(null)
 
 const goToPrev = () => {
-  router.push('/screen/1')
+  router.back()
 }
 
 const goToSports = () => {

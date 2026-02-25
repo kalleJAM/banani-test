@@ -341,11 +341,7 @@ const weightPercent = computed(() => {
 const goToSports = () => router.push('/screen/19')
 
 const goToPrev = () => {
-  if (step.value === 1) {
-    router.push('/screen/6')
-  } else {
-    router.push(`/screen/${step.value + 5}`)
-  }
+  router.back()
 }
 
 const decreaseCount = () => {
@@ -424,7 +420,7 @@ const showInfo = () => {
 
 const handleCalculate = () => {
   if (motherHeight.value && fatherHeight.value) {
-    router.push('/screen/11')
+    router.push('/screen/12')
   } else {
     alert('Bitte gib die Größe beider Elternteile ein.')
   }

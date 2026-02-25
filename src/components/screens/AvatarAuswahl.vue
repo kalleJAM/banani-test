@@ -147,7 +147,7 @@ const router = useRouter()
 const selectedAvatar = ref('')
 
 const goToPrev = () => {
-  router.push('/screen/11')
+  router.back()
 }
 
 const goToSports = () => {

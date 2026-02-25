@@ -74,7 +74,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goToPrev = () => {
-  router.push('/screen/2')
+  router.back()
 }
 
 const goToSports = () => {

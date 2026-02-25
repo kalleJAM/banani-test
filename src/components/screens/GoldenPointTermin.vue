@@ -217,7 +217,7 @@ const selectedDateLabel = computed(() => {
 })
 
 function goBack() {
-  router.push('/screen/11')
+  router.back()
 }
 
 function goToSports() {
