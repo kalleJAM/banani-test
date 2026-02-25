@@ -104,7 +104,7 @@ import { ScreenTopBar } from '../shared'
 const router = useRouter()
 
 const handleStartAccount = () => {
-  router.push('/screen/2')
+  router.push('/screen/36')
 }
 
 const handleOtherCode = () => {
