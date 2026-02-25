@@ -218,7 +218,7 @@ function setNextSaturday() {
 }
 
 function confirmTermin() {
-  alert('Termin wird bestätigt – Weiterleitung zum Payment.')
+  router.push('/screen/34')
 }
 </script>
 

@@ -32,7 +32,9 @@ const screens = [
   { id: 30, name: 'QR- oder Link-Start', path: '/screen/30', component: 'QrLinkStart' },
   { id: 31, name: 'Sport-Detail', path: '/screen/31', component: 'SportDetail' },
   { id: 32, name: 'Wohnzimmer-Test Kaufabschluss', path: '/screen/32', component: 'WohnzimmerCheckout' },
-  { id: 33, name: 'Sport-Matching Detail', path: '/screen/33', component: 'SportMatchingDetail' }
+  { id: 33, name: 'Sport-Matching Detail', path: '/screen/33', component: 'SportMatchingDetail' },
+  { id: 34, name: 'Golden Point Payment', path: '/screen/34', component: 'GoldenPointPayment' },
+  { id: 35, name: 'Golden Point Zahlung erfolgreich', path: '/screen/35', component: 'GoldenPointPaymentSuccess' }
 ]
 
 export { screens }

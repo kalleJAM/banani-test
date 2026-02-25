@@ -79,11 +79,14 @@ function goToScreen(path) {
   showMenu.value = false
 }
 
+const screenIds = screens.map(s => s.id).sort((a, b) => a - b)
 const handleKeyPress = (e) => {
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-    if (currentScreenId.value < screens.length) router.push(`/screen/${currentScreenId.value + 1}`)
+    const nextIdx = screenIds.indexOf(currentScreenId.value) + 1
+    if (nextIdx < screenIds.length) router.push(`/screen/${screenIds[nextIdx]}`)
   } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-    if (currentScreenId.value > 1) router.push(`/screen/${currentScreenId.value - 1}`)
+    const prevIdx = screenIds.indexOf(currentScreenId.value) - 1
+    if (prevIdx >= 0) router.push(`/screen/${screenIds[prevIdx]}`)
   } else if (e.key === 'Escape') {
     showMenu.value = false
   }
