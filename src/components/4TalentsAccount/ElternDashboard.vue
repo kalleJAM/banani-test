@@ -78,7 +78,7 @@ const goAthleten = () => {
 }
 
 const goResults = () => {
-  router.push('/screen/28')
+  router.push('/screen/51')
 }
 </script>
 
