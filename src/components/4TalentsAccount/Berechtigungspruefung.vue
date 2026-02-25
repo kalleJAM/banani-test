@@ -3,31 +3,24 @@
     <div class="mobile-root">
       <div class="content">
         <div class="icon-container">
-          <iconify-icon icon="lucide:mail-check" class="icon-mail" aria-hidden="true" />
+          <iconify-icon icon="lucide:shield-alert" class="icon-shield" aria-hidden="true" />
         </div>
 
-        <h1 class="headline">Bitte bestätige die Registrierung</h1>
+        <h1 class="headline">Bist du der/die Erziehungsberechtigte?</h1>
 
         <p class="description">
-          Wir haben eine E-Mail an
-          <strong>{{ emailDisplay }}</strong> gesendet. Bitte klicke auf den
-          Link in der E-Mail, um die Spielerregistrierung abzuschließen.
+          <strong>Max Mustermann</strong> versucht, den Spieler
+          <strong>Leo Schmidt</strong> zum 4talents-Konto hinzuzufügen. Bist
+          du der/die Erziehungsberechtigte und möchtest den Spieler
+          hinzufügen?
         </p>
 
-        <button type="button" class="btn-primary" @click="onWeiter">
-          Weiter
+        <button type="button" class="btn-primary" @click="onJa">
+          Ja, Spieler hinzufügen
         </button>
 
-        <button type="button" class="btn-secondary" @click="onEmailErneut">
-          E-Mail erneut senden
-        </button>
-
-        <button type="button" class="text-link" @click="onAndereEmail">
-          Andere E-Mail verwenden
-        </button>
-
-        <button type="button" class="bottom-link" @click="goDashboard">
-          Zurück zum Dashboard
+        <button type="button" class="btn-destructive-outline" @click="onNein">
+          Nein, das bin ich nicht
         </button>
       </div>
 
@@ -37,31 +30,16 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const route = useRoute()
 
-const emailDisplay = computed(() => {
-  const email = route.query.email
-  return email && typeof email === 'string' ? email : 'email@beispiel.de'
-})
-
-const onWeiter = () => {
-  router.push('/screen/46')
+const onJa = () => {
+  router.push('/screen/47')
 }
 
-const goDashboard = () => {
-  router.push('/screen/38')
-}
-
-const onEmailErneut = () => {
-  // Platzhalter – später API-Call
-}
-
-const onAndereEmail = () => {
-  router.push('/screen/42')
+const onNein = () => {
+  router.push('/screen/48')
 }
 </script>
 
@@ -107,7 +85,7 @@ const onAndereEmail = () => {
   color: var(--primary);
 }
 
-.icon-mail {
+.icon-shield {
   font-size: 40px;
 }
 
@@ -115,16 +93,16 @@ const onAndereEmail = () => {
   font-size: 24px;
   font-weight: 700;
   color: var(--foreground);
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   line-height: 1.3;
 }
 
 .description {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--muted-foreground);
-  line-height: 1.5;
-  margin: 0 0 32px;
-  max-width: 280px;
+  line-height: 1.6;
+  margin: 0 0 40px;
+  max-width: 300px;
 }
 
 .description strong {
@@ -153,12 +131,12 @@ const onAndereEmail = () => {
   opacity: 0.95;
 }
 
-.btn-secondary {
+.btn-destructive-outline {
   width: 100%;
   height: 52px;
   background-color: transparent;
-  color: var(--foreground);
-  border: 1px solid var(--border);
+  color: var(--destructive);
+  border: 1px solid var(--destructive);
   border-radius: var(--radius-lg);
   font-size: 16px;
   font-weight: 600;
@@ -166,44 +144,11 @@ const onAndereEmail = () => {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-bottom: 16px;
   font-family: inherit;
 }
 
-.btn-secondary:hover {
-  background-color: var(--muted);
-}
-
-.text-link {
-  font-size: 15px;
-  color: var(--primary);
-  background: none;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 48px;
-  padding: 8px;
-  font-family: inherit;
-}
-
-.text-link:hover {
-  text-decoration: underline;
-}
-
-.bottom-link {
-  margin-top: auto;
-  font-size: 15px;
-  color: var(--muted-foreground);
-  background: none;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 12px 8px 24px;
-  font-family: inherit;
-}
-
-.bottom-link:hover {
-  color: var(--foreground);
+.btn-destructive-outline:hover {
+  background-color: rgba(239, 68, 68, 0.08);
 }
 
 .home-indicator {
