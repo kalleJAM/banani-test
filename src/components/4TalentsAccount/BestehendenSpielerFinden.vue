@@ -86,7 +86,11 @@ const goBack = () => {
 }
 
 const onSuchen = () => {
-  resultsText.value = 'Suche wird ausgeführt …'
+  if (vorname.value.trim().toLowerCase() === 'leo') {
+    router.push('/screen/43')
+  } else {
+    router.push('/screen/44')
+  }
 }
 
 const goNeuRegistrieren = () => {

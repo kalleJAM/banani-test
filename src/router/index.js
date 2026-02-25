@@ -41,7 +41,9 @@ const screens = [
   { id: 39, name: 'Athlet hinzufügen', path: '/screen/39', component: '4TalentsAccount/AthletHinzufuegen' },
   { id: 40, name: 'Spieler hinzufügen', path: '/screen/40', component: '4TalentsAccount/SpielerHinzufuegen' },
   { id: 41, name: 'Bestehenden Spieler finden', path: '/screen/41', component: '4TalentsAccount/BestehendenSpielerFinden' },
-  { id: 42, name: 'Neuen Spieler registrieren', path: '/screen/42', component: '4TalentsAccount/NeuenSpielerRegistrieren' }
+  { id: 42, name: 'Neuen Spieler registrieren', path: '/screen/42', component: '4TalentsAccount/NeuenSpielerRegistrieren' },
+  { id: 43, name: 'Spieler gefunden', path: '/screen/43', component: '4TalentsAccount/SpielerGefunden' },
+  { id: 44, name: 'Keinen Spieler gefunden', path: '/screen/44', component: '4TalentsAccount/KeinenSpielerGefunden' }
 ]
 
 export { screens }
@@ -59,6 +61,7 @@ function getScreenComponent (componentPath) {
   return loader
 }
 
+/** Lazy loader: 4TalentsAccount per dynamischem Import (skalierbar), Rest über Glob. */
 function getComponentLoader (componentPath) {
   if (componentPath.startsWith('4TalentsAccount/')) {
     const name = componentPath.replace('4TalentsAccount/', '')
