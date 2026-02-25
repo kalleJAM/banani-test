@@ -137,7 +137,10 @@ const goBack = () => {
 }
 
 const onSubmit = () => {
-  router.push('/screen/38')
+  router.push({
+    path: '/screen/45',
+    query: email.value ? { email: email.value } : {}
+  })
 }
 </script>
 

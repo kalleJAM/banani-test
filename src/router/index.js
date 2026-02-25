@@ -43,7 +43,8 @@ const screens = [
   { id: 41, name: 'Bestehenden Spieler finden', path: '/screen/41', component: '4TalentsAccount/BestehendenSpielerFinden' },
   { id: 42, name: 'Neuen Spieler registrieren', path: '/screen/42', component: '4TalentsAccount/NeuenSpielerRegistrieren' },
   { id: 43, name: 'Spieler gefunden', path: '/screen/43', component: '4TalentsAccount/SpielerGefunden' },
-  { id: 44, name: 'Keinen Spieler gefunden', path: '/screen/44', component: '4TalentsAccount/KeinenSpielerGefunden' }
+  { id: 44, name: 'Keinen Spieler gefunden', path: '/screen/44', component: '4TalentsAccount/KeinenSpielerGefunden' },
+  { id: 45, name: 'E-Mail Bestätigung', path: '/screen/45', component: '4TalentsAccount/EmailBestaetigungSpieler' }
 ]
 
 export { screens }
