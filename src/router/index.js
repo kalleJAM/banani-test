@@ -44,7 +44,7 @@ const screens = [
   { id: 42, name: 'Neuen Spieler registrieren', path: '/screen/42', component: '4TalentsAccount/NeuenSpielerRegistrieren' },
   { id: 43, name: 'Spieler gefunden', path: '/screen/43', component: '4TalentsAccount/SpielerGefunden' },
   { id: 44, name: 'Keinen Spieler gefunden', path: '/screen/44', component: '4TalentsAccount/KeinenSpielerGefunden' },
-  { id: 45, name: 'E-Mail Bestätigung', path: '/screen/45', component: '4TalentsAccount/EmailBestaetigungSpieler' },
+  { id: 45, name: 'E-Mail Bestätigung1', path: '/screen/45', component: '4TalentsAccount/EmailBestaetigungSpieler' },
   { id: 46, name: 'Berechtigungsprüfung', path: '/screen/46', component: '4TalentsAccount/Berechtigungspruefung' },
   { id: 47, name: 'Support Anfrage', path: '/screen/47', component: '4TalentsAccount/SupportAnfrage' },
   { id: 48, name: 'Nicht berechtigt', path: '/screen/48', component: '4TalentsAccount/NichtBerechtigt' },
