@@ -39,7 +39,7 @@ const onJa = () => {
 }
 
 const onNein = () => {
-  router.push('/screen/48')
+  router.push('/screen/46')
 }
 </script>
 
